@@ -1,0 +1,33 @@
+
+activate environment:	py -3 -m venv .venv	
+			.venv\scripts\activate
+			** daca nu merge din cauza privacy: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+
+update pip:  python -m pip install --upgrade pip
+
+install flask:  python -m pip install flask
+
+activate in another terminal: .venv\Scripts\Activate.ps1
+
+run flask in terminal dev server: python -m flask run
+
+how to set env variable for flask app: $env:FLASK_APP = "test.py"
+
+debug mode: $env:FLASK_DEBUG = 1  
+
+
+
+
+EU :
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+env\Scripts\activate                                                  || .venv\Scripts\Activate.ps1
+
+$env:FLASK_DEBUG = 1 
+
+
+python -m flask run
+
+
+
+& "C:/Program Files/Python311/python.exe" C:\Users\HP\Desktop\licenta_nou\Licenta\main.py

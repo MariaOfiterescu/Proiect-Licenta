@@ -1,0 +1,182 @@
+<title>{% block title  %}Adăugare film{% endblock %}</title>
+ <!DOCTYPE html>
+ <html>
+ <head>
+    
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Adăugare film</title> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" /> 
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+            integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+            crossorigin="anonymous"
+        />
+        <link
+
+    <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" 
+    crossorigin="anonymous">
+    </script>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="static/css/styles.css" rel="stylesheet" /> 
+
+        <style>
+            body {
+              background-image: url('/static/image.png');
+              background-repeat: no-repeat;
+              background-size: cover;
+              
+            }
+          </style> 
+         
+    
+</head>
+
+
+
+<body id="page-top">
+    <br> 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == 'error'%}
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                         {{ message }}
+                        
+                    </div>
+                {% else %}
+                    <div class="alert alert-success alert-dismissible fade show">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                         {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}      
+    </body>
+<body>
+
+  <div style="position:relative;margin:20px">  
+    <label id="description-label1"><b>Introduceți informațiile noului film:</b></label><br><br>
+    <form id="movie-form" action="/addMovie" method="POST" enctype="multipart/form-data">
+        <label id="id-label"><b>Introduceți ID-ul filmului:</b></label><br>
+        <input type="text" class="transparent-button"  name="idName" required><br><br>
+
+        <label id="titlu-label"><b>Introduceți numele filmului:</b></label><br>
+        <input type="text" class="transparent-button" name="movieName" required><br><br>
+
+        <label id="descriere-label"><b>Introduceți paragraful cu descrierea:</b></label><br>
+        <textarea name="descrName" class="transparent-button" required></textarea><br><br>
+
+        <label id="dur-label"><b>Durata filmului:</b></label><br>
+        <input name="durName" class="transparent-button" required></input><br><br>
+
+        <label id="an-label"><b>Anul apariției filmului:</b></label><br>
+        <input name="anName" class="transparent-button" required></input><br><br>
+
+        <label id="categ-label"><b>Categoria de vârstă potrivită filmului:</b></label><br>
+        <input name="categName" class="transparent-button" required></input><br><br>
+
+        <label id="act-label"><b>Actorul principal al filmului (introduceți id-ul din listă):</b></label><br>
+        <input name="actName" class="transparent-button" required></input><br><br>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Actor ID </th>
+                    <th>Nume Prenume</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for actor in actori %}
+                <tr>
+                    <td>{{ actor[0] }}</td>
+                    <td>{{ actor[1] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <label id="image-label"><b>Alegeți coperta filmului: </b></label><br>   
+        <input type="file" name="filmPhoto" accept="image/*" required><br><br>
+
+        <label id="gen-label"><b>Genul filmului (introduceți id-ul din listă):</b></label><br>
+        <input name="genName" class="transparent-button" required></input><br>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Gen ID</th>
+                    <th>Nume Gen</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for gen in genuri %}
+                <tr>
+                    <td>{{ gen[0] }}</td>
+                    <td>{{ gen[1] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+
+        <label id="dir-label"><b>Directorul filmului (introduceți id-ul):</b></label><br>
+        <input name="dirName" class="transparent-button" required></input><br>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Director ID</th>
+                    <th>Nume Prenume</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dir in director %}
+                <tr>
+                    <td>{{ dir[0] }}</td>
+                    <td>{{ dir[1] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        
+        <label id="scen-label"><b>Scenariul filmului (introduceți id-ul):</b></label><br>
+        <input name="scenName" class="transparent-button" required></input><br>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenariu ID</th>
+                    <th>Nume</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for scenariu in scenarii %}
+                <tr>
+                    <td>{{ scenariu[0] }}</td>
+                    <td>{{ scenariu[1] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+
+      <input type="submit" id="submit" class="mod-button"  name="submit" value="Submit">
+    </form>
+  </div>
+  
+</body>
+</html> 

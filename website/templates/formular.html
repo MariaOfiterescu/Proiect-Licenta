@@ -1,0 +1,345 @@
+<title>{% block title  %}Form{% endblock %}</title>
+ <!DOCTYPE html>
+ <html>
+ <head>
+    
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Formular</title> 
+        <!-- Favicon-->
+        <!--<link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" /> -->
+        <!-- Font Awesome icons (free version)-->
+        <!--<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script> -->
+        <!-- Google fonts-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" /> 
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+            integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+            crossorigin="anonymous"
+        />
+
+        
+        <link
+
+    <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" 
+    crossorigin="anonymous">
+    </script>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="static/css/styles.css" rel="stylesheet" /> 
+
+        <style>
+            body {
+              background-image: url('/static/image20.png');
+              background-repeat: no-repeat;
+              background-size: cover;
+              
+            }
+          </style> 
+         
+    
+</head>
+
+
+
+<body id="page-top">
+    
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container-fluid">
+            <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                MENU
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+    
+            <div class="collapse navbar-collapse justify-content-start" id="navbarResponsive">
+                <div class="d-flex">  
+                    <ul class="navbar-nav">
+                        <a class="nav-item nav-link align-self-start" id="home" href="/home">Acasă</a>
+                        <a class="nav-item nav-link align-self-start" id="form" href="/formular">Formular</a>
+                        <a class="nav-item nav-link align-self-start" id="form" href="/formular_rezultate">Recomandari</a>
+                        <a class="nav-item nav-link align-self-start" id="filme" href="/filme">Filme și Seriale</a>
+                       <!--  <a class="nav-item nav-link align-self-start" id="logout" href="/logout">Logout</a> -->
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+                <ul class="navbar-nav ">
+
+                    {% if email %}
+
+                    <li><a class="nav-item nav-link" id ="home" href="/logout">Delogare ({{ email }}) </a></li>
+                
+                {% else  %}
+                    <li><a class="nav-item nav-link" id ="login">Nu sunteți logat! </a></li>
+                {% endif %}
+                </ul>	
+                    
+<!--
+                    <a class="nav-item nav-link" id="about" href="/about">About</a>
+                    <a class="nav-item nav-link "id="contact" href="/contact">Contact</a -->
+                </ul>		  
+                
+            </div>
+       
+       </div>
+    </nav>
+
+  <br><br><br><br><br><br><br>  
+<form method="POST">
+    <h3 align="center">Formular</h3>
+   <!-- <div class="form-group">
+        <label for="titluri">Titluri</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="titluri" 
+            name="titluri" 
+            placeholder="Introduceți titlurile"
+        />-->
+     <br>
+    </div>
+    <div style="margin-left: 15px">
+    <label id="description-label1"> Salut!</label>
+    <label id="description-label2"> Te rugăm să răspunzi la întrebările de mai jos!</label><br><br> 
+    <fieldset>  
+        <legend>Care este genul de film favorit?</legend>
+
+        <div style="margin-left: 20px">
+            <input type="checkbox" name="gen_favorit" value="Actiune" onclick="return ValidateGenSelection();">Actiune<br>  
+            <input type="checkbox" name="gen_favorit" value="Drama" onclick="return ValidateGenSelection();">Drama<br>  
+            <input type="checkbox" name="gen_favorit" value="Crima" onclick="return ValidateGenSelection();">Crima<br>
+            <input type="checkbox" name="gen_favorit" value="Horror" onclick="return ValidateGenSelection();">Horror<br> 
+            <input type="checkbox" name="gen_favorit" value="Romanta" onclick="return ValidateGenSelection();">Romanta<br> 
+            <input type="checkbox" name="gen_favorit" value="Thriller" onclick="return ValidateGenSelection();">Thriller<br> 
+            <input type="checkbox" name="gen_favorit" value="Mister" onclick="return ValidateGenSelection();">Mister<br> 
+            <input type="checkbox" name="gen_favorit" value="Animatie" onclick="return ValidateGenSelection();">Animatie<br>   
+            <input type="checkbox" name="gen_favorit" value="Aventura" onclick="return ValidateGenSelection();">Aventura<br> 
+            <input type="checkbox" name="gen_favorit" value="Fantasy" onclick="return ValidateGenSelection();">Fantezie<br> 
+            <input type="checkbox" name="gen_favorit" value="SF" onclick="return ValidateGenSelection();">SF<br> 
+            <input type="checkbox" name="gen_favorit" value="Biografic" onclick="return ValidateGenSelection();">Biografic<br> 
+            <input type="checkbox" name="gen_favorit" value="Istoric" onclick="return ValidateGenSelection();">Istoric<br> 
+            <input type="checkbox" name="gen_favorit" value="Politist" onclick="return ValidateGenSelection();">Politist<br>
+            <input type="checkbox" name="gen_favorit" value="Comedie" onclick="return ValidateGenSelection();">Comedie<br>
+
+            </div>  
+    </fieldset>  
+    
+    <script type="text/javascript">  
+    function ValidateGenSelection()  
+    {  
+        var checkboxes = document.getElementsByName("gen_favorit");  
+        var numberOfCheckedItems = 0;  
+        for(var i = 0; i < checkboxes.length; i++)  
+        {  
+            if(checkboxes[i].checked)  
+                numberOfCheckedItems++;  
+        }  
+        if(numberOfCheckedItems > 3)  
+        {  
+            alert("Nu puteți selecta mai mult de 3 genuri!");  
+            return false;  
+        }
+        else if(numberOfCheckedItems == 0 )
+        {
+            alert('N-a fost selectat niciun gen!', category = 'error')
+            return false; 
+        }
+        else if(numberOfCheckedItems > 1 && numberOfCheckedItems <= 3)
+        {
+            return true;
+        }
+    }  
+    </script>
+     
+    <fieldset>  
+    <legend>Ce an al apariției filmelor doriți ?</legend>  
+        <div style="margin-left: 20px">
+
+            <input type="checkbox" name="an_favorit" value="1969" onclick="return ValidateAnSelection();">1969<br>
+            <input type="checkbox" name="an_favorit" value="1972" onclick="return ValidateAnSelection();">1972<br>
+            <input type="checkbox" name="an_favorit" value="1977" onclick="return ValidateAnSelection();">1977<br>
+            <input type="checkbox" name="an_favorit" value="1979" onclick="return ValidateAnSelection();">1979<br>
+            <input type="checkbox" name="an_favorit" value="1980" onclick="return ValidateAnSelection();">1980<br>
+            <input type="checkbox" name="an_favorit" value="1990" onclick="return ValidateAnSelection();">1990<br>
+            <input type="checkbox" name="an_favorit" value="1993" onclick="return ValidateAnSelection();">1993<br>
+            <input type="checkbox" name="an_favorit" value="1994" onclick="return ValidateAnSelection();">1994<br>
+            <input type="checkbox" name="an_favorit" value="1995" onclick="return ValidateAnSelection();">1995<br>
+            <input type="checkbox" name="an_favorit" value="1997" onclick="return ValidateAnSelection();">1997<br>
+            
+
+            <input type="checkbox" name="an_favorit" value="2001" onclick="return ValidateAnSelection();">2001<br>  
+            <input type="checkbox" name="an_favorit" value="2002" onclick="return ValidateAnSelection();">2002<br>  
+            <input type="checkbox" name="an_favorit" value="2003" onclick="return ValidateAnSelection();">2003<br>
+            <input type="checkbox" name="an_favorit" value="2008" onclick="return ValidateAnSelection();">2008<br> 
+
+            <input type="checkbox" name="an_favorit" value="2016" onclick="return ValidateAnSelection();">2016<br>
+            <input type="checkbox" name="an_favorit" value="2017" onclick="return ValidateAnSelection();">2017<br>
+            <input type="checkbox" name="an_favorit" value="2018" onclick="return ValidateAnSelection();">2018<br>
+            <input type="checkbox" name="an_favorit" value="2019" onclick="return ValidateAnSelection();">2019<br>
+            <input type="checkbox" name="an_favorit" value="2021" onclick="return ValidateAnSelection();">2021<br>
+            <input type="checkbox" name="an_favorit" value="2022" onclick="return ValidateAnSelection();">2022<br>
+
+            
+        </div>
+    </fieldset>   
+
+    <script type="text/javascript">  
+    function ValidateAnSelection()  
+    {  
+        var checkboxes = document.getElementsByName("an_favorit");  
+        var numberOfCheckedItems = 0;  
+        for(var i = 0; i < checkboxes.length; i++)  
+        {  
+            if(checkboxes[i].checked)  
+                numberOfCheckedItems++;  
+        }  
+        if(numberOfCheckedItems > 3)  
+        {  
+            alert("Nu puteți selecta mai mult de 3 ani!");  
+            return false;  
+        }
+        else if(numberOfCheckedItems < 1 )
+        {
+            alert("Trebuie să selectați cel puțin un an !");  
+            return false; 
+        }
+        else if (numberOfCheckedItems > 1 && numberOfCheckedItems <= 3)
+        {
+            return true;
+        } 
+    }  
+    </script>
+ 
+    <fieldset>  
+    <legend>Care sunt actorii dumneavoastră preferați?</legend>  
+        <div style="margin-left: 20px">
+            <input type="checkbox" name="actor_favorit" value="Christian Bale" onclick="return ValidateActorSelection();">Christian Bale<br>  
+            <!--<input type="checkbox" name="actor_favorit" value="Heath Ladger" onclick="return ValidateActorSelection();">Heath Ladger<br>  
+            <input type="checkbox" name="actor_favorit" value="Aaron Eckhart" onclick="return ValidateActorSelection();">Aaron Eckhart<br> -->
+
+            <input type="checkbox" name="actor_favorit" value="Elijah Wood" onclick="return ValidateActorSelection();">Elijah Wood<br>
+            <!--<input type="checkbox" name="actor_favorit" value="Viggo Mortensen" onclick="return ValidateActorSelection();">Viggo Mortensen<br>
+            <input type="checkbox" name="actor_favorit" value="Ian McKellen" onclick="return ValidateActorSelection();">Ian McKellen<br>
+            <input type="checkbox" name="actor_favorit" value="Orlando Bloom" onclick="return ValidateActorSelection();">Orlando Bloom<br> -->
+            
+            <input type="checkbox" name="actor_favorit" value="Marolon Brando" onclick="return ValidateActorSelection();">Marolon Brando<br>
+            <input type="checkbox" name="actor_favorit" value="Al Pacino" onclick="return ValidateActorSelection();">Al Pacino<br>
+
+            <input type="checkbox" name="actor_favorit" value="Sigourney Weaver" onclick="return ValidateActorSelection();">Sigourney Weaver<br>
+
+            <input type="checkbox" name="actor_favorit" value="Anthony Perkins" onclick="return ValidateActorSelection();">Anthony Perkins<br>
+
+            <input type="checkbox" name="actor_favorit" value="Chanchal Chowdhury" onclick="return ValidateActorSelection();">Chanchal Chowdhury<br>
+
+            <input type="checkbox" name="actor_favorit" value="Roberto Benigni" onclick="return ValidateActorSelection();">Roberto Benigni<br>
+
+            <input type="checkbox" name="actor_favorit" value="Tom Hanks" onclick="return ValidateActorSelection();">Tom Hanks<br>
+
+            <input type="checkbox" name="actor_favorit" value="Ryunosuke Kamiki" onclick="return ValidateActorSelection();">Ryunosuke Kamiki<br>
+
+            <input type="checkbox" name="actor_favorit" value="Matthew Broderick" onclick="return ValidateActorSelection();">Matthew Broderick<br>
+
+            <input type="checkbox" name="actor_favorit" value="Shameik Moore" onclick="return ValidateActorSelection();">Shameik Moore<br>
+
+            <input type="checkbox" name="actor_favorit" value="Mark Hamill" onclick="return ValidateActorSelection();">Mark Hamill<br>
+
+            <input type="checkbox" name="actor_favorit" value="Liam Neeson" onclick="return ValidateActorSelection();">Liam Neeson<br>
+
+            <input type="checkbox" name="actor_favorit" value="Ranganathan Madhavan" onclick="return ValidateActorSelection();">Ranganathan Madhavan<br>
+
+            <input type="checkbox" name="actor_favorit" value="Mel Gibson" onclick="return ValidateActorSelection();">Mel Gibson<br>
+
+            <input type="checkbox" name="actor_favorit" value="Dwayne Johnson" onclick="return ValidateActorSelection();">Dwayne Johnson<br>
+
+            <input type="checkbox" name="actor_favorit" value="Dave Bautista" onclick="return ValidateActorSelection();">Dave Bautista<br>
+
+
+        </div>
+    </fieldset>  
+    
+        <script type="text/javascript">  
+        function ValidateActorSelection()  
+        {  
+            var checkboxes = document.getElementsByName("actor_favorit");  
+            var numberOfCheckedItems = 0;  
+            for(var i = 0; i < checkboxes.length; i++)  
+            {  
+                if(checkboxes[i].checked)  
+                    numberOfCheckedItems++;  
+            }  
+            if(numberOfCheckedItems > 5)  
+            {  
+                alert("Nu puteți selecta mai mult de 5 actori !");  
+                return false;  
+            }
+            else if (numberOfCheckedItems < 1 )
+            {
+                alert("Trebuie să selectați cel puțin un actor !");  
+                return false; 
+            }
+            else if (numberOfCheckedItems > 1 && numberOfCheckedItems <= 5)
+            {
+                return true;
+            } 
+        }  
+        </script>
+
+    <br />
+   
+</form>
+
+
+    <fieldset>  
+    <legend>Ce categorie de vârstă preferați?</legend> 
+        <div style="margin-left: 20px">
+            <input type="checkbox" name="categ_fav" value="G" onclick="return ValidateCategSelection();">G: Publicul general - Toate vârstele admise<br>  
+            <input type="checkbox" name="categ_fav" value="PG" onclick="return ValidateCategSelection();">PG: Se recomandă îndrumarea părinților - Unele materiale pot să nu fie potrivite pentru copii<br>  
+            <input type="checkbox" name="categ_fav" value="PG-13" onclick="return ValidateCategSelection();"> PG-13: Părinții sunt avertizați - Unele materiale pot fi nepotrivite pentru copiii sub 13 ani<br>
+            <input type="checkbox" name="categ_fav" value="R" onclick="return ValidateCategSelection();">R: Restricţionat - Sub 17 ani necesită părinte însoțitor sau tutore adult<br> 
+        </div>   
+    </fieldset>  
+
+    <script type="text/javascript">  
+    function ValidateCategSelection()  
+    {  
+        var checkboxes = document.getElementsByName("categ_fav");  
+        var numberOfCheckedItems = 0;  
+        for(var i = 0; i < checkboxes.length; i++)  
+        {  
+            if(checkboxes[i].checked)  
+                numberOfCheckedItems++;  
+        }  
+        if(numberOfCheckedItems > 2)  
+        {  
+            alert("Nu puteți selecta mai mult de 2 categorii !");  
+            return false;  
+        }
+        else if (numberOfCheckedItems < 1 )
+            {
+                alert("Trebuie să selectați cel puțin o categorie !");  
+                return false; 
+            }
+        else if(numberOfCheckedItems > 1 && numberOfCheckedItems <= 2)
+            {
+                return true;
+            } 
+    }  
+    </script>
+
+<br />
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+</body>
+</html> 

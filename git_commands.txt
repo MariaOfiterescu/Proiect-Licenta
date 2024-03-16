@@ -1,0 +1,13 @@
+cd C:\\Users\\HP\\Desktop\\PWEB\\PWeb ----> ajungem la path ul fisierului
+
+git status
+
+git add -A ->>> adaugi toate fisierele in coada de commit(pregatesti toate fisierele pt a fi 
+                       commited)
+
+git status
+
+
+git commit -m "mesaj"
+
+ git push origin main  || git push origin2 master

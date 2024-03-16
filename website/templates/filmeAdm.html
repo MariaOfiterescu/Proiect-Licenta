@@ -1,0 +1,287 @@
+<title>{% block title  %}Administrare filme{% endblock %}</title>
+ <!DOCTYPE html>
+ <html>
+ <head>
+    
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Administrare filme</title> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" /> 
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+            integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+            crossorigin="anonymous"
+        />
+        <link
+
+    <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" 
+    crossorigin="anonymous">
+    </script>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="static/css/styles.css" rel="stylesheet" /> 
+
+        <style>
+            body {
+              background-image: url('/static/image.png');
+              background-repeat: no-repeat;
+              background-size: cover;
+              
+            }
+          </style> 
+         
+    
+</head>
+
+
+
+<body id="page-top">
+    
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                MENU
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+        
+            <div class="collapse navbar-collapse justify-content-start" id="navbarResponsive">
+                <div class="d-flex">  
+                    <ul class="navbar-nav">
+                        <a class="nav-item nav-link align-self-start" id="home" href="/homeAdm">Acasă</a>
+                        <a class="nav-item nav-link align-self-start" id="form" href="/filmeAdm">Filme</a>
+                        <a class="nav-item nav-link align-self-start" id="form" href="/serialeAdm">Seriale</a>
+                        <a class="nav-item nav-link align-self-start" id="form" href="/usersAdm">Utilizatori</a>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+                <ul class="navbar-nav ">
+                    <li><a class="nav-item nav-link" id ="home" href="/logout">Delogare (admin) </a></li>
+                </ul>	
+                    
+<!--
+                    <a class="nav-item nav-link" id="about" href="/about">About</a>
+                    <a class="nav-item nav-link "id="contact" href="/contact">Contact</a -->
+                </ul>		  
+                
+            </div>
+        
+
+       
+       </div>
+    </nav>
+
+  <br><br><br><br><br><br><br>  
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == 'error'%}
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                         {{ message }}
+                        
+                    </div>
+                {% else %}
+                    <div class="alert alert-success alert-dismissible fade show">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                         {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %} 
+    </style>
+    </head>
+    <body>
+
+
+        <div style="margin-left: 10px;">
+
+             
+
+                <div class="search-box">
+                    <label><b>Filtre de căutare: </b></label>
+                    <input type="text" style = "margin-left: 7px" id="searchInput1" class="transparent-button" onkeyup="searchList()" placeholder="Căutați după titlu...">
+                    <input type="text" style = "margin-left: 7px" id="searchInput2" class="transparent-button" onkeyup="searchList2()" placeholder="Căutați după an...">
+                </div><br>
+                <button class="adding-button" onclick="addMovie()">Adaugă film</button>
+            
+        </div>
+
+        <div style="position:relative;margin:20px">
+          {% for i in range(lungime2) %}
+          <div class="panel" style="margin-left: -50px" id="movie-panel-{{ i }}" movie-id="{{ result_list2[i][9] }}">
+            <div class="panel-title">
+              <div class="grid-container">
+                <div class="grid-item">
+                  <p class="movie-title"><b>{{ result_list2[i][0] }}</b></p>
+                  <img src="data:image/png;base64,{{ result_list2[i][6] }}" alt="Image" width="200">
+                </div>
+                <div class="grid-item">
+                  <p><b>Descriere:</b></p>
+                  <p>{{ result_list2[i][1] }}</p>
+                </div>
+                <div class="grid-item">
+                  <p><b>Durata: {{ result_list2[i][2] }}</b></p>
+                  <p><b>Anul apariției: <span class="movie-year">{{ result_list2[i][3] }}</span></b></p>
+                  <p class="movie-age-category"><b>Categorie vârstă: {{ result_list2[i][4] }}</b></p>
+                  <p class="movie-actors"><b>Actorii care participă la acest film sunt: {{ result_list2[i][5] }}</b></p>
+                  <p><b>Genurile filmului sunt: {{ result_list2[i][7] }}</b></p>
+                  <p class="movie-directors"><b>Directorul filmului este: {{ result_list2[i][8] }}</b></p>
+
+                  <br>
+                </div>
+
+               
+                <button class="del-button grid-item button-container" data-index="{{ i }}" onclick="delMovie(event)">Șterge film</button>
+                <button class="mod-button grid-item button-container" onclick="modMovie(event)">Modifică film</button>
+              
+              </div>
+            </div>
+             
+            <div class="panel-content" style="display: none;">
+              <form action="/update_movie" method="post">
+                <br>
+                <label for="descriere" class="form-field"><b>Introduceți noile valori pentru câmpurile:</b></label><br>
+                <label for="title" class="form-field"><b>Titlu:</b></label>
+                <input type="text" class="transparent-button" name="title" id="title" required><br>
+        
+                <label for="duration" class="form-field"><b>Durata:</b></label>
+                <input type="text"class="transparent-button"  name="duration" id="duration" required><br>
+        
+                <label for="description" class="form-field"><b>Descriere:</b></label>
+                <input type="text" class="transparent-button" name="description" id="description" required><br>
+        
+                <label for="release_year" class="form-field"><b>An apariție:</b></label>
+                <input type="text" class="transparent-button" name="release_year" id="release_year" required><br>
+        
+                <label for="age_category" class="form-field" ><b>Categorie vârstă:</b></label>
+                <input type="text" class="transparent-button" name="age_category" id="age_category" required><br><br>
+        
+                <input type="hidden" class="movie-id" name="movie_id" value="{{ result_list2[i][9] }}">
+                <input type="submit" class="mod-button" value="Update">
+              </form>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Filter panels based on search input
+    $('#searchInput1').on('input', function() {
+      var searchValue = $(this).val().toLowerCase();
+      $('.panel').each(function() {
+        var panelTitle = $(this).find('.movie-title').text().toLowerCase();
+        if (panelTitle.indexOf(searchValue) > -1) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    });
+  });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Filter panels based on search input
+    $('#searchInput2').on('input', function() {
+      var searchValue = $(this).val().toLowerCase();
+      $('.panel').each(function() {
+        var panelYear = $(this).find('.movie-year').text().toLowerCase();
+        if (panelYear.indexOf(searchValue) > -1) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    });
+  });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function addMovie() {
+      window.location.replace("/addMovie");
+    }
+
+    function modMovie(event) {
+      var panel = event.target.closest(".panel");
+      var panelContent = panel.querySelector(".panel-content");
+      
+      // Toggle the display of the panel content
+      if (panelContent.style.display === "block") {
+        panelContent.style.display = "none";
+      } else {
+        panelContent.style.display = "block";
+      }
+    }
+    function submitForm(event) {
+      event.preventDefault();
+      
+      // Get the form data and submit it
+      var form = event.target.closest("form");
+      var formData = new FormData(form);
+      var movieId = form.querySelector(".movie-id").value;
+      formData.append("movie_id", movieId);
+      
+      fetch("/update_movie", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          // Movie updated successfully
+          console.log("Movie updated successfully");
+          location.reload();
+        } else {
+          // Error updating movie
+          console.error("Error updating movie");
+        }
+      })
+      .catch(error => {
+        // Handle network errors or other exceptions
+        console.error("An error occurred:", error);
+      });
+    }
+    
+    function delMovie(event) {
+      var panel = event.target.closest('.panel');
+      var movieId = panel.getAttribute("movie-id");
+      panel.remove();
+  
+      // Send AJAX request to delete the movie with the given ID
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/delete_movie", true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            // Movie successfully deleted
+            console.log("Movie deleted");
+          } else {
+            // Error occurred while deleting movie
+            console.error("Error deleting movie");
+          }
+        }
+      };
+      xhr.send(JSON.stringify({ movie_id: movieId }));
+    }
+  </script>
+  
+</body>
+</html> 
